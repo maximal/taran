@@ -17,7 +17,8 @@ class LoadCommand extends Command
 	'{--c|concurrency=10 : Number of parallel processes}' .
 	'{--t|timeout=2.0 : Timeout of HTTP request in seconds}' .
 	'{--b|body= : HTTP body to send in every request}' .
-	'{--histogram=20 : Timing histogram bars count (0 to disable)}';
+	'{--histogram=20 : Timing histogram bars count (0 to disable)}' .
+	'{--export= : Export request timings data (without timeouts) to file}';
 
 	/**
 	 * The description of the command.
@@ -220,6 +221,16 @@ class LoadCommand extends Command
 
 		if ($this->bars > 1) {
 			self::printHistogram($timesTotal, $this->bars);
+		}
+
+		// Export
+		$export = (string)($this->option('export') ?: '');
+		if ($export !== '') {
+			$this->info('Writing timings to: ' . $export);
+			file_put_contents(
+				$export,
+				'Total Request Time' . PHP_EOL . implode(PHP_EOL, $timesTotal)
+			);
 		}
 
 		$this->info(sprintf(
