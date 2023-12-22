@@ -1,0 +1,72 @@
+{
+	"name": "maximal/taran",
+	"description": "Web applications and servers benchmarking tool.",
+	"version": "0.5.0",
+	"keywords": [
+		"benchmark",
+		"tool",
+		"laravel",
+		"laravel zero",
+		"console",
+		"cli"
+	],
+	"homepage": "https://github.com/maximal/taran",
+	"type": "project",
+	"license": "MIT",
+	"support": {
+		"issues": "https://github.com/maximal/taran/issues",
+		"source": "https://github.com/maximal/taran"
+	},
+	"authors": [
+		{
+			"name": "MaximAL",
+			"email": "almaximal@ya.ru"
+		}
+	],
+	"require": {
+		"php": "^8.1|^8.2|^8.3|^8.4",
+		"ext-curl": "*",
+		"ext-mbstring": "*",
+		"ext-sockets": "*",
+		"ext-pcntl": "*",
+
+		"laravel-zero/framework": "^10.0.2",
+		"nunomaduro/termwind": "^1.15.1",
+		"spatie/fork": "^1.2"
+	},
+	"require-dev": {
+		"mockery/mockery": "^1.5.1",
+		"pestphp/pest": "^2.5",
+		"roave/security-advisories": "dev-latest"
+	},
+	"minimum-stability": "stable",
+	"prefer-stable": true,
+	"autoload": {
+		"psr-4": {
+			"App\\": "app/",
+			"Database\\Factories\\": "database/factories/",
+			"Database\\Seeders\\": "database/seeders/"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"Tests\\": "tests/"
+		}
+	},
+	"config": {
+		"preferred-install": "dist",
+		"sort-packages": true,
+		"optimize-autoloader": true,
+		"allow-plugins": {
+			"pestphp/pest-plugin": true
+		}
+	},
+	"scripts": {
+		"build": [
+			"@php taran app:build"
+		]
+	},
+	"bin": [
+		"taran"
+	]
+}
